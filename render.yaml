@@ -1,0 +1,23 @@
+# render.yaml
+services:
+  - type: web
+    name: prospeccion-ia-app
+    env: python
+    region: frankfurt  # o ohio para América
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        sync: false  # ← Se configura manualmente en el dashboard
+      - key: APIFY_API_KEY
+        sync: false
+      - key: MILLION_VERIFIER_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GOOGLE_CREDENTIALS_PATH
+        sync: false
+      - key: SHEETS_SPREADSHEET_ID
+        sync: false
